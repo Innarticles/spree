@@ -27,8 +27,9 @@ module Spree
       def selected_shipping_rate_present?(params)
         shipments_attributes = params.dig(:order, :shipments_attributes)
         return false unless shipments_attributes
-
-        shipments_attributes.to_unsafe_h.any? { |s| s.dig(:selected_shipping_rate_id) }
+        
+        shipments_attributes.to_unsafe_h = shipments_attributes
+        shipments_attributes.any? { |s| s.dig(:selected_shipping_rate_id) }
       end
 
       def replace_country_iso_with_id(params, address_kind = 'ship')

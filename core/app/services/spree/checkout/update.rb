@@ -28,7 +28,7 @@ module Spree
         shipments_attributes = params.dig(:order, :shipments_attributes)
         return false unless shipments_attributes
         
-        shipments_attributes.to_unsafe_h = shipments_attributes
+        shipments_attributes = shipments_attributes.to_unsafe_h
         shipments_attributes.any? { |s| s.dig(:selected_shipping_rate_id) }
       end
 

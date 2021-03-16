@@ -32,11 +32,9 @@ module Spree
         puts 'x' * 100
         puts shipments_attributes
         puts 'f' * 100
-        puts shipments_attributes.to_h
-        puts 'm' * 100
         puts shipments_attributes.to_unsafe_h
         puts 'z' * 100
-        shipments_attributes.to_h.any? { |s| s.dig("selected_shipping_rate_id") }
+        shipments_attributes.to_unsafe_h.any? { |s| s.dig("selected_shipping_rate_id") }
 #         shipments_attributes.to_h.any? { |s| s.dig(:selected_shipping_rate_id) }
       end
 
